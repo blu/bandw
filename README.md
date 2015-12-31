@@ -17,9 +17,11 @@ Usage
 -----
 
 First, launch the responder (in this case on interface eth1; substitute dummy target MAC for that of the transmitter):
+
 		sudo ./bandw -interface eth1 -target 0x01:0x02:0x03:0x04:0x05:0x06 -packetcount 2048
 
 Then run the transmitter (in this case on interface eth2; substitute dummy target MAC for that of the responder):
+
 		sudo ./bandw -interface eth2 -target 0x06:0x05:0x04:0x03:0x02:0x01 -packetcount 2048 -transmitter
 
 If you're wondering why the responder needs to know the transmitter's address - I didn't bother to implement address readback for the responder.
