@@ -8,11 +8,10 @@ Ever wondered if you could gain an extra bit of bandwidth or trim some latency b
 
 Some sample measurements (only the payload of the frame taken into account, i.e. 1500 bytes/frame):
 
-Gigabit Ethernet, dedicated interfaces on two desktops:
-	bandwidth 121579830 bytes/s
-
-54Mbit-hotspot WiFi Ethernet, quiet interfaces on a desktop and a notebook:
-	bandwidth 1728900 bytes/s
+| Type of connection                                                        | bandwidth, bytes/s |
+| ------------------------------------------------------------------------- | ------------------ |
+| Gigabit Ethernet, dedicated interfaces on two desktops                    |          121579830 |
+| 54Mbit-hotspot WiFi Ethernet, quiet interfaces on a desktop and a netbook |            1728900 |
 
 Usage
 -----
