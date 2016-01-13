@@ -16,6 +16,8 @@ Some sample measurements (only the payload of the frame taken into account, i.e.
 Usage
 -----
 
+Before you start you may want to cast silence on the participating interfaces -- you can do that via the supplied script strip_eth.sh which restarts an interface to bare link mode.
+
 First, launch the responder (in this case on interface eth1; substitute dummy target MAC for that of the transmitter):
 
 		sudo ./bandw -interface eth1 -target 0x01:0x02:0x03:0x04:0x05:0x06 -packetcount 2048
@@ -26,4 +28,4 @@ Then run the transmitter (in this case on interface eth2; substitute dummy targe
 
 If you're wondering why the responder needs to know the transmitter's address - I didn't bother to implement address readback for the responder.
 
-As a rule of thumb, if the connection is not quiet enough, try reducing the packet count and thus increasing the chances to get a quiet window.
+As a rule of thumb, if the connection is not quiet enough (and using strip_eth.sh is not an option), try reducing the packet count and thus increasing the chances to get a quiet window.

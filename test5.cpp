@@ -266,7 +266,7 @@ int main(
 			const ssize_t sent = sendto(fd, frame0, frame_max_size, 0, reinterpret_cast< sockaddr* >(&saddr), sizeof(saddr));
 
 			if (frame_max_size != sent) {
-				fprintf(stderr, "error: sendto() failed to send requested byte count\n");
+				fprintf(stderr, "error: sendto() failed to send requested byte count (errno: %s)\n", strerror(errno));
 				return -1;
 			}
 		}
@@ -275,7 +275,7 @@ int main(
 			const ssize_t recv = recvfrom(fd, frame1, frame_max_size, 0, 0, 0);
 
 			if (frame_max_size != recv) {
-				fprintf(stderr, "error: recvfrom() got unexpected byte count\n");
+				fprintf(stderr, "error: recvfrom() got unexpected byte count (errno: %s)\n", strerror(errno));
 				return -1;
 			}
 
@@ -310,7 +310,7 @@ int main(
 			const ssize_t recv = recvfrom(fd, frame1, frame_max_size, 0, 0, 0);
 
 			if (frame_max_size != recv) {
-				fprintf(stderr, "error: recvfrom() got unexpected byte count\n");
+				fprintf(stderr, "error: recvfrom() got unexpected byte count (errno: %s)\n", strerror(errno));
 				return -1;
 			}
 
@@ -330,7 +330,7 @@ int main(
 			const ssize_t sent = sendto(fd, frame0, frame_max_size, 0, reinterpret_cast< sockaddr* >(&saddr), sizeof(saddr));
 
 			if (frame_max_size != sent) {
-				fprintf(stderr, "error: sendto() failed to send requested byte count\n");
+				fprintf(stderr, "error: sendto() failed to send requested byte count (errno: %s)\n", strerror(errno));
 				return -1;
 			}
 		}
