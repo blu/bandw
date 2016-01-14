@@ -13,7 +13,7 @@ if (( $? == 1 )); then
 fi
 
 # take down the interface
-sudo ip link set $1 down
+sudo ifdown $1
 
 # ipv6 can autostart - disable that
 sudo sysctl -q -w net.ipv6.conf.$1.disable_ipv6=1
