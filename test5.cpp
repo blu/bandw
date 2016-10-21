@@ -216,7 +216,7 @@ int main(
 		return -1;
 	}
 
-	// room for two ethernet frames, plase
+	// room for two ethernet frames, please
 	const scoped< uint8_t*, generic_free > frame(
 		reinterpret_cast< uint8_t* >(malloc(frame_max_size * 2)));
 
