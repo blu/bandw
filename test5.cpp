@@ -8,11 +8,11 @@
 #include <memory.h>
 #include <unistd.h>
 #include <assert.h>
+#include "timer.h"
 
 #include <arpa/inet.h>
 #include <sys/types.h>
 #include <sys/socket.h>
-#include <time.h>
 #include <errno.h>
 
 // raw ethernet frames
@@ -74,14 +74,6 @@ struct close_file_descriptor {
 			close(fd);
 	}
 };
-
-static uint64_t timer_nsec() {
-
-	timespec t;
-	clock_gettime(CLOCK_MONOTONIC_RAW, &t);
-
-	return t.tv_sec * uint64_t(1e9) + t.tv_nsec;
-}
 
 // simultaneously init ethernet frame header and socket address structure
 // based on http://aschauf.landshut.org/fh/linux/udp_vs_raw/ch01s03.html
@@ -256,7 +248,7 @@ int main(
 
 		printf("transmitter at interface %s\n", argv[iface_nameidx]);
 
-		const uint64_t t0 = timer_nsec();
+		const uint64_t t0 = timer_ns();
 
 		for (uint32_t i = 0; i < packet_count; ++i) {
 			// this communication is intended for same-endian peers -- no need to go through network endianness
@@ -287,7 +279,7 @@ int main(
 			} 
 		}
 
-		const uint64_t dt = timer_nsec() - t0;
+		const uint64_t dt = timer_ns() - t0;
 
 		if (0 != dt) {
 			const double transcieved = double(packet_size) * double(packet_count) * 2.0;
